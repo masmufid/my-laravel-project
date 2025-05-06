@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
+
 
 $secretariat = [
     [
@@ -13,10 +15,10 @@ $secretariat = [
     ],
     [
         'id' => 2,
-        'name' => 'Mr. Aluthwala Hewa Nuwan Chinthaka',
+        'name' => 'Mr. Aluthwalahewa Nuwan Chinthaka',
         'position' => 'Deputy Director General',
         'country' => 'Sri Lanka',
-        'urlImage' => 'https://coconutcommunity.org/files/image/picture-mr-aluthwala-hewa-nuwan-chinthaka.jpg'
+        'urlImage' => 'https://coconutcommunity.org/files/image/picture-aluthwala-hewa-nuwan-chinthaka.jpeg'
     ],
     [
         'id' => 3,
@@ -53,6 +55,8 @@ Route::get('/', function () {
     return view('home', ['vision' => 'Globally Sustainable, Resilient, Inclusive and highly Profitable Coconut Sector']);
 });
 
+
+
 Route::get('/about', function () use ($secretariat) {
    
     return view('about',[
@@ -77,6 +81,18 @@ Route::get('/publication', function () {
 
 Route::get('/contact', function () {
     return view('contact');
+});
+
+Route::get('/user', function () {
+    $user = User::find(1);
+    echo $user->name;
+    echo $user->email;
+    echo $user->password;
+    echo $user->created_at;
+    echo $user->updated_at;
+    echo $user->email_verified_at;
+    echo $user->remember_token;
+    // return view('user');
 });
 
 
